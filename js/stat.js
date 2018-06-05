@@ -1,4 +1,4 @@
-"use strict"
+'use strict';
 
 window.renderStatistics = function (ctx, names, times) {
   var dataCloud = {
@@ -9,30 +9,30 @@ window.renderStatistics = function (ctx, names, times) {
     lenghtShadow: 10,
     margin: 40,
 
-    colorRect: ["rgba(0, 0, 0, 0.7)", "rgb(256, 256, 256)"],
-    text: ["Ура вы победили!", "Список результатов: "]
+    colorRect: ['rgba(0, 0, 0, 0.7)', 'rgb(256, 256, 256)'],
+    text: ['Ура вы победили!', 'Список результатов: ']
   };
 
-drawRect(dataCloud.startX + dataCloud.lenghtShadow, dataCloud.startY + dataCloud.lenghtShadow, dataCloud.widthRect, dataCloud.heightRect, dataCloud.colorRect[0]);
-drawRect(dataCloud.startX, dataCloud.startY, dataCloud.widthRect, dataCloud.heightRect, dataCloud.colorRect[1]);
-writeText(dataCloud.text);
-drawHistogram(times, names);
+  drawRect(dataCloud.startX + dataCloud.lenghtShadow, dataCloud.startY + dataCloud.lenghtShadow, dataCloud.widthRect, dataCloud.heightRect, dataCloud.colorRect[0]);
+  drawRect(dataCloud.startX, dataCloud.startY, dataCloud.widthRect, dataCloud.heightRect, dataCloud.colorRect[1]);
+  writeText(dataCloud.text);
+  drawHistogram(times, names);
 
-function drawRect(axisX, axisY, width, height, fillColor) {
+  function drawRect(axisX, axisY, width, height, fillColor) {
     ctx.fillStyle = fillColor;
     ctx.fillRect(axisX, axisY, width, height);
   }
 
-function writeText(textArray) {
-  ctx.fillStyle = "#000000";
-  ctx.font = "16px PT Mono";
+  function writeText(textArray) {
+    ctx.fillStyle = '#000000';
+    ctx.font = '16px PT Mono';
 
-  for (var i = 0; i < textArray.length; i++) {
-    ctx.fillText(textArray[i], dataCloud.startX + dataCloud.margin, dataCloud.startY + (i + 1) * 25);
+    for (var i = 0; i < textArray.length; i++) {
+      ctx.fillText(textArray[i], dataCloud.startX + dataCloud.margin, dataCloud.startY + (i + 1) * 25);
+    }
   }
- }
 
- function drawHistogram(arrayTimes, arrayNames) {
+  function drawHistogram(arrayTimes, arrayNames) {
     var dataHistogram = {
       barWidth: 40,
       indent: 90,
@@ -60,22 +60,22 @@ function writeText(textArray) {
   }
 
   function getMaxValue(array) {
-   var max = -1;
-   for (var i = 0; i < array.length; i++) {
-     var value = array[i];
-     if (value > max) {
-       max = value;
-     }
-   }
-   return max;
- }
+    var max = -1;
+    for (var i = 0; i < array.length; i++) {
+      var value = array[i];
+      if (value > max) {
+        max = value;
+      }
+    }
+    return max;
+  }
 
- function fillBarColor(namePlayer) {
+  function fillBarColor(namePlayer) {
     var randomOpacity = Math.random().toFixed(2);
-    if (namePlayer === "Вы") {
-      ctx.fillStyle = "rgba(255, 0, 0, 1)";
+    if (namePlayer === 'Вы') {
+      ctx.fillStyle = 'rgba(255, 0, 0, 1)';
     } else {
-      ctx.fillStyle = "rgba(0, 0, 255, " + randomOpacity + ")";
+      ctx.fillStyle = 'rgba(0, 0, 255, ' + randomOpacity + ')';
     }
   }
 };
